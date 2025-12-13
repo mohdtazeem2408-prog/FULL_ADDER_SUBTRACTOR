@@ -42,16 +42,71 @@ Borrow out = A'Bin + A'B + BBin
 
 Write the detailed procedure here
 
-**Program:**
+Program:
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+```
 
-**RTL Schematic**
 
-**Output Timing Waveform**
 
-**Result:**
+
+1) module fa (
+    input  wire a,
+    input  wire b,
+    input  wire cin,
+    output wire sum,
+    output wire carry
+);
+
+assign sum   = a ^ b ^ cin;
+assign carry = (a & b) | (cin & (a ^ b));
+
+endmodule
+
+```
+
+```
+2) module fs (
+    input  wire a,
+    input  wire b,
+    input  wire bin,
+    output wire difference,
+    output wire borrow
+);
+
+assign difference = a ^ b ^ bin;
+assign borrow     = (~a & b) | (bin & ~(a ^ b));
+
+endmodule
+
+```
+
+
+
+RTL Schematic
+
+FULL ADDER
+
+<img width="1031" height="530" alt="Screenshot 2025-12-13 202907" src="https://github.com/user-attachments/assets/5d166ab7-c404-49d2-a178-b396e4a2fa4e" />
+
+FULL SUBTRACTOR
+
+
+<img width="1036" height="529" alt="Screenshot 2025-12-13 202927" src="https://github.com/user-attachments/assets/ddc420a6-b1f5-4bc9-8eb4-c35e4262f8da" />
+
+
+Output Timing Waveform
+
+
+FULL ADDER
+
+<img width="1032" height="534" alt="Screenshot 2025-12-13 203347" src="https://github.com/user-attachments/assets/3a718687-8987-45a6-9a98-27cfd2edfd37" />
+
+FULL SUBTRACTOR
+
+<img width="1195" height="619" alt="Screenshot 2025-12-13 203425" src="https://github.com/user-attachments/assets/52acccdb-616a-4a4b-a83a-d9085278ed5a" />
+
+
+Result:
 
 Thus the Full Adder and Full Subtractor circuits are designed and the truth tables is verified using Quartus software.
 
