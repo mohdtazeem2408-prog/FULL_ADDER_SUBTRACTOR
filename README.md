@@ -36,62 +36,63 @@ Diff = A ⊕ B ⊕ Bin
 
 Borrow out = A'Bin + A'B + BBin
 
-**Truthtable**
+Truthtable
 
-**Procedure**
+<img width="694" height="460" alt="Screenshot 2025-12-14 084519" src="https://github.com/user-attachments/assets/3ef9171a-f004-49db-ac43-5af69abb41f9" />
+
+
+
+<img width="807" height="621" alt="Screenshot 2025-12-14 084535" src="https://github.com/user-attachments/assets/c4f830b1-5f10-4fed-a0ec-c90952f6af47" />
+
+
+
+Procedure
+1.Type the program in Quartus software.
+
+2.Compile and run the program.
+
+3.Generate the RTL schematic and save the logic diagram.
+
+4.Create nodes for inputs and outputs to generate the timing diagram.
+
+5.For different input combinations generate the timing diagram.
+
+
 
 Write the detailed procedure here
 
 Program:
 
 ```
-
-
-
-
-1) module fa (
-    input  wire a,
-    input  wire b,
-    input  wire cin,
-    output wire sum,
-    output wire carry
-);
-
-assign sum   = a ^ b ^ cin;
-assign carry = (a & b) | (cin & (a ^ b));
-
+module full_adder(a,b,c,sum,carry);
+input a,b,c;
+output sum,carry;
+assign sum=(a^b^c);
+assign carry=(a&b)|(b&c)|(c&a);
 endmodule
 
 ```
-
 ```
-2) module fs (
-    input  wire a,
-    input  wire b,
-    input  wire bin,
-    output wire difference,
-    output wire borrow
-);
-
-assign difference = a ^ b ^ bin;
-assign borrow     = (~a & b) | (bin & ~(a ^ b));
-
+module full_subtractor(a,b,c,diff,borrow);
+input a,b,c;
+output diff,borrow;
+assign diff=(a^b^c);
+assign borrow=(~a&c)|(~a&b)|(b&c);
 endmodule
 
 ```
-
 
 
 RTL Schematic
 
 FULL ADDER
 
-<img width="1031" height="530" alt="Screenshot 2025-12-13 202907" src="https://github.com/user-attachments/assets/5d166ab7-c404-49d2-a178-b396e4a2fa4e" />
+<img width="1037" height="572" alt="Screenshot 2025-12-14 084137" src="https://github.com/user-attachments/assets/60ff158f-e8a7-4a4a-a76e-0c3cab69b8d2" />
 
 FULL SUBTRACTOR
 
 
-<img width="1036" height="529" alt="Screenshot 2025-12-13 202927" src="https://github.com/user-attachments/assets/ddc420a6-b1f5-4bc9-8eb4-c35e4262f8da" />
+<img width="1036" height="522" alt="Screenshot 2025-12-14 084206" src="https://github.com/user-attachments/assets/8fef7a92-a630-44d7-a2ff-34fd8b0710d0" />
 
 
 Output Timing Waveform
@@ -99,11 +100,12 @@ Output Timing Waveform
 
 FULL ADDER
 
-<img width="1032" height="534" alt="Screenshot 2025-12-13 203347" src="https://github.com/user-attachments/assets/3a718687-8987-45a6-9a98-27cfd2edfd37" />
+<img width="1034" height="324" alt="Screenshot 2025-12-14 084227" src="https://github.com/user-attachments/assets/56a30a34-d3dc-4450-a050-0a9d10a76e85" />
+
 
 FULL SUBTRACTOR
 
-<img width="1195" height="619" alt="Screenshot 2025-12-13 203425" src="https://github.com/user-attachments/assets/52acccdb-616a-4a4b-a83a-d9085278ed5a" />
+<img width="1035" height="295" alt="Screenshot 2025-12-14 084244" src="https://github.com/user-attachments/assets/94f6a389-5a57-4f21-aaab-ad8371cd5d0b" />
 
 
 Result:
